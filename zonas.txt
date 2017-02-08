@@ -1,0 +1,1 @@
+REPLACE INTO `asesorescomerciales`(`CodAsesor`,`Cedula`,`Clave`,`Nombre`,`Telefono`,`TelefonoMovilPersonal`,`TelefonoMovilEmpresarial`,`CorreoElectronico`,`Direccion`,`Imagen`,`InfoActivity`,`IdPerfil`,`Agencia`) VALUES('16233976','16233976','11861','TORO GIRALDO ELMER DE JESUS','','','','','','','0','3','')
