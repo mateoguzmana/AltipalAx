@@ -83,7 +83,7 @@
                         $cedula = Yii::app()->getUser()->getState('_cedula');
                         if ($cedula == '11200') {
                             ?>
-                            <li class=""><a href="index.php?r=erroresactualizacion/Verlog"><i class="fa fa-circle-o"></i> <span>Log Errores</span></a></li>    
+                            <li class=""><a href="index.php?r=Logs/index"><i class="fa fa-circle-o"></i> <span>Logs</span></a></li>    
                             <li class=""><a href="index.php?r=site/ControlVersion"><i class="fa fa-circle-o"></i> <span>Control Version</span></a></li>
                             <li class=""><a href="index.php?r=site/PermisosPaginWeb"><i class="fa fa-circle-o"></i> <span>Permisos Pagina Web</span></a></li>
                             <li class=""><a href="http://altipal.datosmovil.info/ScriptPendientesTransmitir.php" target="_blank"><i class="fa fa-circle-o"></i> <span>Pendientes Por Transmitir</span></a></li>

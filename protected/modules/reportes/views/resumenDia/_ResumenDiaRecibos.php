@@ -140,15 +140,7 @@
                                        <th colspan="5" style="background-color: #C5D9F1; font-size: 12px;" class="text-center" colspan="2">Formas De Pago</th> 
                                          
                                    </tr>
-                                   
-                                   <tr>
-                                        
-                                      <td class="text-center">
-                                          <img src="images/reporteefectivo.png" style="width: 40px; height: 40px;"  class="cursorpointer" onclick="Efectivo(<?php echo $iteminfoFac['Id']?>,'<?php echo $iteminfo['CodAgencia']?>')"   title="Efectivo">
-                                      </td>
-                                      <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Efectivo</b></td>
-                                     
-                                       <?php 
+                                   <?php 
                                       $sumaefectivo = ReporteFzNoVentas::model()->getSumaEfectivo($iteminfoFac['Id'],$iteminfo['CodAgencia']);
                                       
                                       $auxi=0;
@@ -157,19 +149,18 @@
                                           $auxi = $itemefectivo['Efectivo'];
                                           }
                                       }
-                                      ?>
-                                     
-                                      <td class="text-center" colspan="3">$  <?php echo number_format($auxi,'2',',','.'); ?></td>
-                                      
-                                   </tr>
-                                   
-                                    <tr>
-                                        
+
+                                   if($auxi!=0){
+                                   ?>
+                                   <tr>
                                       <td class="text-center">
-                                          <img src="images/efectivoConsig.png" style="width: 40px; height: 40px;"  class="cursorpointer"  onclick="EfectivoConsig(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Efectivo Consignación">
+                                          <img src="images/reporteefectivo.png" style="width: 40px; height: 40px;"  class="cursorpointer" onclick="Efectivo(<?php echo $iteminfoFac['Id']?>,'<?php echo $iteminfo['CodAgencia']?>')"   title="Efectivo">
                                       </td>
-                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Efectivo Consignación</b></td>
-                                        <?php 
+                                      <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Efectivo</b></td>
+                                      <td class="text-center" colspan="3">$  <?php echo number_format($auxi,'2',',','.'); ?></td>
+                                   </tr>
+                                   <?php } ?>
+                                   <?php 
                                       $sumaefectivoConsignacion = ReporteFzNoVentas::model()->getSumaEfectivoConsignacion($iteminfoFac['Id'],$iteminfo['CodAgencia']);
                                       
                                       $axu=0; 
@@ -180,18 +171,19 @@
                                          }
                                       }
                                       
-                                      ?>
+                                   if($axu!=0){
+                                   ?>
+                                   <tr>     
+                                      <td class="text-center">
+                                          <img src="images/efectivoConsig.png" style="width: 40px; height: 40px;"  class="cursorpointer"  onclick="EfectivoConsig(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Efectivo Consignación">
+                                      </td>
+                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Efectivo Consignación</b></td>
+                                        
                                        <td class="text-center" colspan="3">$ <?php echo number_format($axu,'2', ',', '.')?></td>
                                    </tr>
-                                   
-                                    <tr>
-                                        
-                                      <td class="text-center">
-                                          <img src="images/reportecheque.png" style="width: 40px; height: 40px;"  class="cursorpointer" onclick="Cheque(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Cheque">
-                                      </td>
-                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Cheque</b></td>
-                                       <?php 
-                                      $sumaecheque = ReporteFzNoVentas::model()->getSumaCheque($iteminfoFac['Id'],$iteminfo['CodAgencia']);
+                                   <?php }?>
+                                   <?php 
+                                      $sumaecheque = ReporteFzNoVentas::model()->getSumaCheque($iteminfoFac['Id'], $iteminfo['CodAgencia']);
                                        
                                       $axu=0;
                                       foreach ($sumaecheque as $itemecheque){
@@ -200,17 +192,17 @@
                                           }
                                       }
                                       
+                                    if($axu!=0){
                                       ?>
+                                    <tr>
+                                      <td class="text-center">
+                                          <img src="images/reportecheque.png" style="width: 40px; height: 40px;"  class="cursorpointer" onclick="Cheque(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Cheque">
+                                      </td>
+                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Cheque</b></td>
                                       <td class="text-center" colspan="3">$ <?php echo number_format($axu,'2', ',', '.')?></td>
                                    </tr>
-                                   
-                                    <tr>
-                                        
-                                      <td class="text-center">
-                                          <img src="images/chequeConsig.png" style="width: 40px; height: 40px;"  class="cursorpointer"  onclick="ChequeConsig(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Cheque Consignación">
-                                      </td>
-                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Cheque Consignación</b></td>
-                                       <?php
+                                   <?php } ?>
+                                   <?php
                                         
                                       $sumachequeconsignacion="";
                                        $sumachequeconsignacion = ReporteFzNoVentas::model()->getSumaChequeConsignacion($iteminfoFac['Id'],$iteminfo['CodAgencia']);
@@ -223,11 +215,40 @@
                                        }
                                            
                                        }
-                                       
-                                       ?>
+                                      
+                                    if($auxi!=0){
+                                    ?>
+                                    <tr> 
+                                      <td class="text-center">
+                                          <img src="images/chequeConsig.png" style="width: 40px; height: 40px;"  class="cursorpointer"  onclick="ChequeConsig(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>')" title="Cheque Consignación">
+                                      </td>
+                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Cheque Consignación</b></td>
                                       <td class="text-center" colspan="3">$ <?php echo number_format($auxi,'2', ',', '.')?></td>
                                    </tr>
-                              
+                                  <?php } ?>
+                                  <?php
+                                        
+                                      $sumaefectivoConsignacion = ReporteFzNoVentas::model()->getSumaEfectivoConsignacion($iteminfoFac['Id'],$iteminfo['CodAgencia'], '007');
+                                      
+                                      $axu=0; 
+                                      foreach ($sumaefectivoConsignacion as $itemefectivoconsig){
+                                         if($itemefectivoconsig['efectivoconsignacion'] > 0){
+                                          $axu = $itemefectivoconsig['efectivoconsignacion'];
+                                           
+                                         }
+                                      }
+                                      //$axu = $iteminfo["ValorAbono"];
+                                      
+                                    if($axu!=0){
+                                    ?>
+                                    <tr> 
+                                      <td class="text-center">
+                                          <img src="imagenes/cardebito.png" style="width: 40px; height: 40px;"  class="cursorpointer"  onclick="EfectivoConsig(<?php echo $iteminfoFac['Id'] ?>,'<?php echo $iteminfo['CodAgencia']?>', '007')" title="Tarjeta débito">
+                                      </td>
+                                       <td class="text-center" style="background-color: #C5D9F1; font-size: 12px;"><b>Tarjeta débito</b></td>
+                                      <td class="text-center" colspan="3">$ <?php echo number_format($axu,'2', ',', '.')?></td>
+                                   </tr>
+                                  <?php } ?>
                             </table>
 
                         </div>   

@@ -210,13 +210,13 @@ function Efectivo(id, agencia) {
 
 }
 
-function EfectivoConsig(id, agencia) {
+function EfectivoConsig(id, agencia, tipoConsignacion) {
 
     $.ajax({
         data: {
             'id': id,
-            'agencia': agencia
-
+            'agencia': agencia,
+            'tipoConsignacion': tipoConsignacion
 
         },
         url: 'index.php?r=reportes/ResumenDia/AjaxDetalleEfectivoConsignacionZona',

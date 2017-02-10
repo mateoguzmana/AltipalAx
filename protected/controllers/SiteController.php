@@ -712,5 +712,4 @@ class SiteController extends Controller {
         fclose($manejador);
         echo $xml;
     }
-
 }

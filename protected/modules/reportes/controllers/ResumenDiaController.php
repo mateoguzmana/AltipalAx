@@ -252,10 +252,11 @@ class ResumenDiaController extends Controller {
 
             $id = $_POST['id'];
             $agencia = $_POST['agencia'];
+            $tipoConsignacion = $_POST['tipoConsignacion'];
 
             $tabladetalle = "";
 
-            $detalle = ReporteFzNoVentas::model()->getGenerarDetalleEfectivoConsignacion($id, $agencia);
+            $detalle = ReporteFzNoVentas::model()->getGenerarDetalleEfectivoConsignacion($id, $agencia, $tipoConsignacion);
 
 
             $tabladetalle.='<table border="1" style="width: 100%">
